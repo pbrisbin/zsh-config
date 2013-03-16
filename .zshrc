@@ -1,5 +1,5 @@
-# environment
 eval "$(dircolors -b $HOME/.dir_colors)"
+
 export GREP_COLOR='1;32'
 export GREP_OPTIONS='--color=auto'
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -10,31 +10,24 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
-# aliases
 alias ls='ls --color=auto'
-
 alias v='vim'
 alias g='git'
 alias p='sudo pacman'
-
 alias b='bundle'
 alias be='b exec'
-
 alias rip='dvd2iso -o /mnt/media/Rips/%s.iso'
 alias piso='mplayer dvd://1 -dvd-device'
 alias pdvd='mplayer dvdnav:// -dvd-device /dev/sr0 -mouse-movements'
-
 alias hdocs="$BROWSER $HOME/.cabal/share/doc/index.html"
 
-# keymap fixes
 bindkey '^[[Z' reverse-menu-complete       # Shift-Tab
 bindkey '^[[3~' delete-char                # Delete
 bindkey -M viins '^?' backward-delete-char # Backspace
 
 source "$ZDOTDIR/functions/setup_completion"
-source "$ZDOTDIR/functions/setup_ssh_agent"
 source "$ZDOTDIR/functions/setup_terminal_title"
+source "$ZDOTDIR/functions/setup_ssh_agent"
 
-# prompt
 autoload -Uz promptinit && promptinit
 prompt minimal
