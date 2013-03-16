@@ -49,24 +49,7 @@ if (( $+commands[pkgfile] )); then
 fi
 
 source "$ZDOTDIR/functions/setup_ssh_agent"
-
-# terminal title
-autoload -Uz add-zsh-hook
-
-function set-titles-precmd() {
-  title_string="${PWD/$HOME/~}"
-
-  case $TERM in
-    screen*)
-      printf "\ek%s\e\\" "$title_string"
-      ;;
-    ((x|a|ml|dt|E)term*|(u|)rxvt*)
-      printf "\e]1;%s\a" "$title_string" # tab
-      printf "\e]2;%s\a" "$title_string" # title
-      ;;
-  esac
-}
-add-zsh-hook precmd set-titles-precmd
+source "$ZDOTDIR/functions/setup_terminal_title"
 
 # prompt
 autoload -Uz promptinit && promptinit
