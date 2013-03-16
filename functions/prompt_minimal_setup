@@ -1,3 +1,4 @@
+# vim: ft=zsh:
 prompt_minimal_precmd() {
   local branch dirty
 
