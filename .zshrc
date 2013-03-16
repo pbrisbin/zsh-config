@@ -44,10 +44,6 @@ zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
 )'
 
-if (( $+commands[pkgfile] )); then
-  source /usr/share/doc/pkgfile/command-not-found.zsh
-fi
-
 source "$ZDOTDIR/functions/setup_ssh_agent"
 source "$ZDOTDIR/functions/setup_terminal_title"
 
