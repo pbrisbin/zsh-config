@@ -1,0 +1,24 @@
+prompt_minimal_precmd() {
+  local branch dirty
+
+  set -g git_info
+
+  if branch="${$(git symbolic-ref -q HEAD 2>/dev/null)##refs/heads/}"; then
+    git diff --quiet || dirty=' *'
+    git_info=" %B%F{cyan}(%F{red}$branch%F{cyan})%F{green}$dirty%f%b"
+  else
+    unset git_info
+  fi
+}
+
+prompt_minimal_setup() {
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd prompt_minimal_precmd
+
+  PROMPT=' %F{cyan}%c%f$git_info '
+  RPROMPT='%(?::%B%F{red}%? %f%b) '
+
+  prompt_opts=( cr percent subst )
+}
+
+prompt_minimal_setup "$@"
