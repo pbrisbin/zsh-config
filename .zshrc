@@ -31,19 +31,7 @@ bindkey '^[[Z' reverse-menu-complete       # Shift-Tab
 bindkey '^[[3~' delete-char                # Delete
 bindkey -M viins '^?' backward-delete-char # Backspace
 
-# completion
-autoload -Uz compinit && compinit -i
-
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
-zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
-
-zstyle -e ':completion:*:hosts' hosts 'reply=(
-  ${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//,/ }
-  ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
-)'
-
+source "$ZDOTDIR/functions/setup_completion"
 source "$ZDOTDIR/functions/setup_ssh_agent"
 source "$ZDOTDIR/functions/setup_terminal_title"
 
