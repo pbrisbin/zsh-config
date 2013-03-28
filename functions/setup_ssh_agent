@@ -1,16 +1,14 @@
 # vim: ft=zsh:
 start_ssh_agent() {
-  /usr/bin/env ssh-agent | sed 's/^echo/#echo/' > "$ssh_env"
+  ssh-agent | sed 's/^echo/#echo/' > "$ssh_env"
 
   chmod 600 "$ssh_env"; . "$ssh_env"
 
-  /usr/bin/ssh-add $HOME/.ssh/id_rsa
-  /usr/bin/ssh-add $HOME/.ssh/id_rsa.ideeli
+  ssh-add $HOME/.ssh/id_rsa
+  ssh-add $HOME/.ssh/id_rsa.ideeli
 }
 
 setup_ssh_agent() {
-  local ssh_env="$HOME/.ssh/environment-$HOST"
-
   if [[ -f "$ssh_env" ]]; then
     . "$ssh_env" > /dev/null
     ps -ef | grep $SSH_AGENT_PID | grep -q 'ssh-agent$' || start_ssh_agent
@@ -19,9 +17,12 @@ setup_ssh_agent() {
   fi
 }
 
+ssh_env="$HOME/.ssh/environment-$HOST"
+
 if (( $+commands[ssh-add] )); then
   setup_ssh_agent
 fi
 
 unset -f start_ssh_agent
 unset -f setup_ssh_agent
+unset -v ssh_env
