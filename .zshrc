@@ -28,5 +28,7 @@ source "$ZDOTDIR/functions/setup_completion"
 source "$ZDOTDIR/functions/setup_terminal_title"
 source "$ZDOTDIR/functions/setup_ssh_agent"
 
+(( $+commands[hub] )) && eval "$(hub alias -s)"
+
 autoload -Uz promptinit && promptinit
 prompt minimal
