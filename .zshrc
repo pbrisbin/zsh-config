@@ -2,8 +2,16 @@ source "$ZDOTDIR/functions/setup_completion"
 source "$ZDOTDIR/functions/setup_terminal_title"
 source "$ZDOTDIR/functions/setup_ssh_agent"
 
+export BROWSER='chromium'
+export PAGER='less'
+
+export EDITOR='vim'
+export VISUAL='vim'
+
 export GREP_COLOR='1;32'
 export GREP_OPTIONS='--color=auto'
+
+export LESS='-R -w'
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'
 export LESS_TERMCAP_me=$'\E[0m'
