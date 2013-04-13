@@ -5,9 +5,6 @@ source "$ZDOTDIR/functions/setup_ssh_agent"
 export BROWSER='chromium'
 export PAGER='less'
 
-export EDITOR='vim'
-export VISUAL='vim'
-
 export GREP_COLOR='1;32'
 export GREP_OPTIONS='--color=auto'
 

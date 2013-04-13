@@ -22,6 +22,9 @@ path=(
   $path
 )
 
+export EDITOR='vim'
+export VISUAL='vim'
+
 if [[ -e /usr/share/chruby ]]; then
   source /usr/share/chruby/chruby.sh
   source /usr/share/chruby/auto.sh
