@@ -5,6 +5,11 @@ fpath=(
   $fpath
 )
 
+cdpath=(
+  "$HOME/Code"
+  $cdpath
+)
+
 manpath=(
   /usr/local/share/man
   $manpath
@@ -15,11 +20,6 @@ path=(
   "$HOME/.cabal/bin"
   "$HOME/Code/bin"
   $path
-)
-
-cdpath=(
-  "$HOME/Code"
-  $cdpath
 )
 
 if [[ -e /usr/share/chruby ]]; then
