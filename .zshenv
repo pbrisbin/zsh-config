@@ -1,11 +1,4 @@
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-else
-  # fix the incorrect source order on Arch
-  emulate sh -c 'source /etc/profile'
-  export BROWSER='chromium'
-fi
-
+export BROWSER='chromium'
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
@@ -27,8 +20,6 @@ path=(
   "$HOME/.bin"
   "$HOME/.cabal/bin"
   "$HOME/Code/bin"
-
-  /usr/local/{bin,sbin}
   $path
 )
 
@@ -43,14 +34,9 @@ if [[ -e /usr/share/chruby ]]; then
   chruby $(cat ~/.ruby-version)
 fi
 
-# if we have brew, add gnu coreutils to path
-if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
-  path=( "$(brew --prefix coreutils)/libexec/gnubin" $path )
-fi
-
 if (( $+commands[dmenu] )); then
   # dmenu-xft required
-  export DMENU_OPTIONS='-i -fn Verdana-16 -nb #303030 -nf #909090 -sb #909090 -sf #303030'
+  export DMENU_OPTIONS='-i -fn Verdana-12 -nb #303030 -nf #909090 -sb #909090 -sf #303030'
 fi
 
 # password-containing environment variables
