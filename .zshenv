@@ -38,4 +38,4 @@ fi
 [[ $TTY == /dev/tty1 ]] \
   && (( $UID ))         \
   && [[ -z $DISPLAY ]]  \
-  && exec systemd --user
+  && exec startx
