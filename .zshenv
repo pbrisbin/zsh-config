@@ -53,10 +53,8 @@ if (( $+commands[dmenu] )); then
   export DMENU_OPTIONS='-i -fn Verdana-16 -nb #303030 -nf #909090 -sb #909090 -sf #303030'
 fi
 
-for f in '.screen/screen.sh' '.secrets'; do
-  [[ -r "$HOME/$f" ]] && source "$HOME/$f"
-done
-unset -v f
+# password-containing environment variables
+[[ -r "$HOME/.secrets" ]] && source "$HOME/.secrets"
 
 # start x if appropriate
 [[ $TTY == /dev/tty1 ]] \
