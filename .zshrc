@@ -17,6 +17,13 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=12000
+SAVEHIST=50000
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
+
 [[ -r $HOME/.dir_colors ]] && eval "$(dircolors -b $HOME/.dir_colors)"
 
 alias ls='ls --color=auto'
@@ -36,6 +43,7 @@ alias hdocs="$BROWSER $HOME/.cabal/share/doc/index.html"
 bindkey '^[[Z' reverse-menu-complete       # Shift-Tab
 bindkey '^[[3~' delete-char                # Delete
 bindkey -M viins '^?' backward-delete-char # Backspace
+bindkey '^R' history-incremental-search-backward
 
 autoload -Uz promptinit && promptinit
 prompt minimal
