@@ -4,6 +4,7 @@ prompt_minimal_precmd() {
 
   set -g git_info
   set -g ruby_info
+  set -g host_info
 
   if branch="${$(git symbolic-ref -q HEAD 2>/dev/null)##refs/heads/}"; then
     git diff --quiet || dirty=' *'
@@ -17,13 +18,19 @@ prompt_minimal_precmd() {
   else
     unset ruby_info
   fi
+
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    host_info="%F{cyan}%m%f//"
+  else
+    unset host_info
+  fi
 }
 
 prompt_minimal_setup() {
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd prompt_minimal_precmd
 
-  PROMPT=' %F{cyan}%c%f$git_info '
+  PROMPT=' $host_info%F{cyan}%c%f$git_info '
   RPROMPT='%(?::%B%F{red}%? %f%b)$ruby_info'
 
   prompt_opts=( cr percent subst )
