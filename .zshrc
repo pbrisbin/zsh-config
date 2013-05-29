@@ -37,6 +37,7 @@ alias rtor='screen -R -D -S rtor'
 alias piso='mplayer dvd://1 -dvd-device'
 alias pdvd='mplayer dvdnav:// -dvd-device /dev/sr0 -mouse-movements'
 alias hdocs="$BROWSER $HOME/.cabal/share/doc/index.html"
+alias db-reset='be rake db:drop db:create db:migrate db:test:prepare db:seed'
 
 (( $+commands[hub] )) && eval "$(hub alias -s)"
 
