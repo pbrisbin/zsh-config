@@ -24,14 +24,14 @@ prompt_minimal_precmd() {
   else
     unset host_info
   fi
+
+  PROMPT=' $host_info%F{cyan}%c%f$git_info '
+  RPROMPT='%(?::%B%F{red}%? %f%b)$ruby_info'
 }
 
 prompt_minimal_setup() {
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd prompt_minimal_precmd
-
-  PROMPT=' $host_info%F{cyan}%c%f$git_info '
-  RPROMPT='%(?::%B%F{red}%? %f%b)$ruby_info'
 
   prompt_opts=( cr percent subst )
 }
