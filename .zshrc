@@ -37,7 +37,7 @@ alias rtor='screen -R -D -S rtor'
 alias piso='mplayer dvd://1 -dvd-device'
 alias pdvd='mplayer dvdnav:// -dvd-device /dev/sr0 -mouse-movements'
 alias hdocs="$BROWSER $HOME/.cabal/share/doc/index.html"
-alias db-reset='be rake db:drop db:create db:migrate db:test:prepare db:seed'
+alias db-reset='be rake db:drop db:create db:migrate db:seed db:test:prepare'
 
 (( $+commands[hub] )) && eval "$(hub alias -s)"
 
@@ -45,6 +45,8 @@ bindkey '^[[Z' reverse-menu-complete       # Shift-Tab
 bindkey '^[[3~' delete-char                # Delete
 bindkey -M viins '^?' backward-delete-char # Backspace
 bindkey '^R' history-incremental-search-backward
+
+setopt auto_cd
 
 autoload -Uz promptinit && promptinit
 prompt minimal
