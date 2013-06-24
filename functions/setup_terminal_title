@@ -1,19 +1,21 @@
 # vim: ft=zsh:
 autoload -Uz add-zsh-hook
 
-function set-titles-precmd() {
-  title_string="${PWD/$HOME/~}"
-
+function set-titles() {
   if [[ -n $STY ]]; then
-    # sets screen tab
-    printf "\ek%s\e\\" "$title_string"
+    printf "\ek%s\e\\" "$*"
   else
     case $TERM in
       ((x|a|ml|dt|E)term*|(u|)rxvt*)
-        printf "\e]1;%s\a" "$title_string" # tab
-        printf "\e]2;%s\a" "$title_string" # title
+        printf "\e]1;%s\a" "$*" # tab
+        printf "\e]2;%s\a" "$*" # title
         ;;
     esac
   fi
 }
+
+function set-titles-precmd() { set-titles "${PWD/$HOME/~}"; }
+function set-titles-preexec() { set-titles $1; }
+
 add-zsh-hook precmd set-titles-precmd
+add-zsh-hook preexec set-titles-preexec
