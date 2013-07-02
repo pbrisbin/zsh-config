@@ -1,26 +1,12 @@
 typeset -gU fpath cdpath manpath path
 
-fpath=(
-  "$ZDOTDIR/functions"
-  $fpath
-)
+fpath=( "$ZDOTDIR/functions" $fpath )
 
-cdpath=(
-  "$HOME/Code"
-  $cdpath
-)
+cdpath=( "$HOME/Code" $cdpath )
 
-manpath=(
-  /usr/local/share/man
-  $manpath
-)
+manpath=( /usr/local/share/man $manpath )
 
-path=(
-  "$HOME/.bin"
-  "$HOME/.cabal/bin"
-  "$HOME/Code/bin"
-  $path
-)
+path=( "$HOME/.bin" "$HOME/.cabal/bin" "$HOME/Code/bin" $path )
 
 export EDITOR='vim'
 export VISUAL='vim'
