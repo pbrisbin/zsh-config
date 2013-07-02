@@ -15,7 +15,7 @@ function set-titles() {
 }
 
 function set-titles-precmd() { set-titles "${PWD/$HOME/~}"; }
-function set-titles-preexec() { set-titles $1; }
+function set-titles-preexec() { set-titles "${2/bundle exec/}"; }
 
 add-zsh-hook precmd set-titles-precmd
 add-zsh-hook preexec set-titles-preexec
