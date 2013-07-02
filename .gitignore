@@ -1,3 +1,5 @@
 .zcompcache
 .zcompdump
 .zcompdump.zwc
+.zsh_history
+.zdirs

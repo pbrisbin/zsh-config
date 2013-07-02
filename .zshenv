@@ -1,15 +1,8 @@
-typeset -gU fpath cdpath manpath path
-
-fpath=( "$ZDOTDIR/functions" $fpath )
+typeset -gU cdpath path
 
 cdpath=( "$HOME/Code" $cdpath )
 
-manpath=( /usr/local/share/man $manpath )
-
-path=( "$HOME/.bin" "$HOME/.cabal/bin" "$HOME/Code/bin" $path )
-
-export EDITOR='vim'
-export VISUAL='vim'
+path=( "$HOME/.bin" "$HOME/.cabal/bin" $path )
 
 if [[ -e /usr/share/chruby ]]; then
   source /usr/share/chruby/chruby.sh
@@ -22,7 +15,4 @@ fi
 [[ -r "$HOME/.secrets" ]] && source "$HOME/.secrets"
 
 # start x if appropriate
-[[ $TTY == /dev/tty1 ]] \
-  && (( $UID ))         \
-  && [[ -z $DISPLAY ]]  \
-  && exec startx
+[[ $TTY == /dev/tty1 ]] && [[ -z $DISPLAY ]] && exec startx
